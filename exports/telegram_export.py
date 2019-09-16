@@ -4,11 +4,9 @@ import requests
 from urllib.request import urlopen
 from bs4 import BeautifulSoup
 
-from export.export_base import ExportBase
-from imports.twitter_import import TwitterImport
-from imports.youtube_import import YouTubeImport
-from imports.facebook_import import FacebookImport
-from imports.vk_import import VKImport
+from storage.inmemory_storage import InmemoryStorage
+
+storage = InmemoryStorage()
 
 class TelegramExport(ExportBase):
     def __init__(self, username):
@@ -17,10 +15,13 @@ class TelegramExport(ExportBase):
         return 'telegram'
         
     def get_news(bot, update):
-        VKImport.get_elements(self, count)
-        YouTubeImport.get_elements(self, count)
-        FacebookImport.get_elements(self, count)
-        TwitterImport.get_elements(self, count)
+      for s in storage:
+        result = s.get_elements()
+
+        for r in result:
+            inspect_element(r)
+            print()
+            storage.find_elements(i.get_key(), r)
 
     def main():
         updater = Updater('942366907:AAG3-yvksu0jZn0DVNULD75XDT-fP7eU8OE') #http://t.me/BotForNews_bot ссылка на бота
