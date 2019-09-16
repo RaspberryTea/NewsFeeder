@@ -17,7 +17,7 @@ class TelegramExport(ExportBase):
         return 'telegram'
         
     def get_news(message, feed_element):
-        bot.send_message(message.chat.id, feed_element.date + feed_element.author))
+        bot.send_message(message.chat.id, feed_element.date + feed_element.author)
         if feed_element.body:
 			bot.send_message(message.chat.id, feed_element.body)
         for image in feed_element.images:
@@ -27,7 +27,7 @@ class TelegramExport(ExportBase):
 
     def export(self, feed_element):
         updater = Updater('942366907:AAG3-yvksu0jZn0DVNULD75XDT-fP7eU8OE') #http://t.me/BotForNews_bot ссылка на бота
-        = updater.dispatcher
+        updater.dispatcher
         dp.add_handler(CommandHandler('news',get_news(message, feed_element)))
         updater.start_polling()
         updater.idle()
